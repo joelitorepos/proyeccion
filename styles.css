@@ -1,0 +1,154 @@
+/* Estilos generales */
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de formularios */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilos para formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+}
+
+.button-submit {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-submit:hover {
+    background-color: #3498db;
+}
+
+/* Estilos para formularios de asuetos */
+.form-asueto {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.input-fecha {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Estilos para alertas */
+.alerta {
+    color: #c0392b;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+}
+
+/* Estilos para resultados */
+.resultados-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+}
+
+.resultados {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.resultados:nth-child(1) {
+    font-weight: bold;
+    color: #2980b9;
+}
+
+.resultados:nth-child(2) {
+    color: #27ae60;
+}
+
+.resultados:nth-child(3) {
+    color: #8e44ad;
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+    main {
+        padding: 15px;
+    }
+
+    .input, .button-submit {
+        font-size: 14px;
+    }
+
+    .form-asueto {
+        padding: 8px;
+    }
+
+    .input-fecha {
+        width: 70px;
+    }
+
+    .resultados {
+        font-size: 14px;
+    }
+}
