@@ -1,12 +1,10 @@
+// -- formulario -
+const formulario = document.getElementById("formulario-ventas") as HTMLFormElement;
+
 // -- inputs --
 const inputMetas = document.getElementById('metas') as HTMLInputElement;
 const inputArticulos = document.getElementById('articulos') as HTMLInputElement;
 const inputAsuetos = document.getElementById('asuetos') as HTMLInputElement;
-
-// -- formularios --
-const formularioVentas = document.getElementById('formulario-ventas') as HTMLFormElement;
-const formularioArticulos = document.getElementById('formulario-articulos') as HTMLFormElement;
-const formularioAsuetos = document.getElementById('formulario-asuetos') as HTMLFormElement;
 
 // -- clases --
 class Fecha {
@@ -120,6 +118,7 @@ class Proyeccion {
       <div class="resultados">proyeccion: ${this.proyeccion}</div>
       <div class="resultados">porcentaje de proyeccion: ${this.porcentajeProyeccion}%</div>
     `
+    document.appendChild(resultado);
   }
 
   static alerta() {
@@ -127,4 +126,8 @@ class Proyeccion {
   }
 }
 
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault(); // para que no se recargue la pagina al enviar el formulario
+});
 
+Proyeccion.mostrarResultados();
