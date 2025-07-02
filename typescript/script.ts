@@ -6,8 +6,13 @@ const inputMetas = document.getElementById('metas') as HTMLInputElement;
 const inputArticulos = document.getElementById('articulos') as HTMLInputElement;
 const inputAsuetos = document.getElementById('asuetos') as HTMLInputElement;
 
-// -- documento de reusltados --
+// -- contenedor de reusltados --
 const resultados = document.getElementById("resultados") as HTMLDivElement;
+
+// -- contendores de errores --
+const alerta = document.getElementById("alerta") as HTMLDivElement;
+const alerta2 = document.getElementById("alerta2") as HTMLDivElement;
+const alerta3 = document.getElementById("alerta3") as HTMLDivElement;
 
 // -- clases --
 class Fecha {
@@ -43,15 +48,16 @@ class Fecha {
     const ultimoDia = this.getUltimoDiaDelMes(); // fin del mes
 
     // desde el dia actual hasta el ultimo del mes
-    for (dia; dia <= ultimoDia; dia++) { 
-      const esSabado = dia === 6;
-      
+    for (let i = dia; i <= ultimoDia; i++) { 
+
+      const fechaIterada = new Date(this.getFecha().getFullYear(), this.getFecha().getMonth(), dia);
+      const diaDeLaSemana = fechaIterada.getDay() // 0 = domingo, 6 = sabado
       // si es sabado no suma un dia ya que no es un dia que se deba de trabajar
-      if (esSabado) {
+      if (diaDeLaSemana == 6) {
         continue;
       }
 
-      dia++
+      diasRestantes++
     }
     // todos los dias que se espera trabajar menos los dias que dan de descanzo
     return diasRestantes - asuetos;
@@ -99,19 +105,47 @@ class Proyeccion {
   // los articulos que deberia vender por dia para llegar a la meta de venta
   static setMetaDiaria() {
     const articulosFaltantes = this.metaVentas - this.articulosVendidos;
-    const diasRestantes = Fecha.diasRestantes();
-    // redondeado hacia arriba
-    this.metaDiaria = Math.ceil(articulosFaltantes / diasRestantes);
+    const diasRestantes = Fecha.diasRestantes(this.asuetos);
+
+    // calcular la meta diara si los dias restantes son validos
+    if (diasRestantes > 0 && articulosFaltantes > 0) {
+      this.metaDiaria = Math.ceil(articulosFaltantes / diasRestantes);
+    } else {
+      this.metaDiaria = 0;
+    }
+
+    // mostrar una alerta si el numero es igual o menor a 0
+    if (this.metaVentas <= 0) {
+      alerta.innerHTML = "la meta de ventas no puede ser 0 o negativa";
+    } else if (diasRestantes <= 0 && articulosFaltantes > 0) {
+      // mostrar otra alerta si no hay restantes pero faltan articulos por vender
+      alerta.innerHTML = "no quedan dias habiles para alcanzar la meta";
+    } else {
+      alerta.innerHTML = "";
+    }
   }
 
   static setProyeccion() {
     // this.articulosVendidos
     const diasTranscurridos = Fecha.getDiasTranscurridos();
-    this.proyeccion = parseFloat((this.articulosVendidos / diasTranscurridos).toFixed(2));
+
+    if (this.metaVentas > 0) {
+      this.proyeccion = parseFloat((this.articulosVendidos / diasTranscurridos).toFixed(2));
+      alerta2.innerHTML = ""
+    } else {
+      alerta2.innerHTML = "error al colocar las metas de ventas debe ser mayor a 0 para realizar la operacion";
+      return;
+    }
   }
 
   static setPorcentajeProyeccion() {
-    this.porcentajeProyeccion = parseFloat(((this.proyeccion / this.metaVentas) * 100).toFixed(2))
+      if (this.metaVentas > 0) {
+      this.porcentajeProyeccion = parseFloat(((this.proyeccion / this.metaVentas) * 100).toFixed(2))
+      alerta3.innerHTML = ""
+    } else {
+      alerta3.innerHTML = "error al colocar las metas de ventas debe ser mayor a 0 para realizar la operacion";
+      return;
+    }
   }
 
   static mostrarResultados() {
@@ -120,10 +154,6 @@ class Proyeccion {
       <div class="resultados">proyeccion: ${this.proyeccion}</div>
       <div class="resultados">porcentaje de proyeccion: ${this.porcentajeProyeccion}%</div>
     `
-  }
-
-  static alerta() {
-
   }
 }
 

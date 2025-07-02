@@ -11,21 +11,23 @@
         <main>
             <h1>Proyeccion de ventas</h1>
             <div id="form-container">
-                <!-- NUEVO FORMULARIO -->
-                <form>
-                    <div id="formulario-ventas">
+                <form id="formulario-ventas">
+                    <div>
                         <h2>Meta de ventas</h2>
                         <input type="number" class="input" id="metas" required>
                     </div>
-                    <div id="formulario-ventas">
+                    <div id="alerta"></div>
+                    <div>
                         <h2>Articulos vendidos</h2>
-                        <input type="number" class="input" id="metas" required>
+                        <input type="number" class="input" id="articulos" required>
                     </div>
-                    <div id="formulario-ventas">
+                    <div id="alerta2"></div>
+                    <div>
                         <h2>Asuetos</h2>
-                        <input type="number" class="input" id="metas" required>
+                        <input type="number" class="input" id="asuetos" required>
                     </div>
-                    <button type="submit"></button>
+                    <div id="alerta3"></div>
+                    <button type="submit" class="button-submit">ENVIAR</button>
                 </form>
             <div id="resultados"></div>
         </main>
