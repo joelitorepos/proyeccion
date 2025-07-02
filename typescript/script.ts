@@ -6,6 +6,9 @@ const inputMetas = document.getElementById('metas') as HTMLInputElement;
 const inputArticulos = document.getElementById('articulos') as HTMLInputElement;
 const inputAsuetos = document.getElementById('asuetos') as HTMLInputElement;
 
+// -- documento de reusltados --
+const resultados = document.getElementById("resultados") as HTMLDivElement;
+
 // -- clases --
 class Fecha {
   static getFecha(): Date {
@@ -112,13 +115,11 @@ class Proyeccion {
   }
 
   static mostrarResultados() {
-    let resultado = document.createElement("DIV");
-    resultado.innerHTML = `
+    resultados.innerHTML = `
       <div class="resultados">meta diaria: ${this.metaDiaria}</div>
       <div class="resultados">proyeccion: ${this.proyeccion}</div>
       <div class="resultados">porcentaje de proyeccion: ${this.porcentajeProyeccion}%</div>
     `
-    document.appendChild(resultado);
   }
 
   static alerta() {
@@ -128,6 +129,21 @@ class Proyeccion {
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault(); // para que no se recargue la pagina al enviar el formulario
+
+  let metaDeVentas = parseInt(inputMetas.value);
+  Proyeccion.setMetaVentas(metaDeVentas);
+
+  let articulosVendidos = parseInt(inputArticulos.value);
+  Proyeccion.setArticulosVendidos(articulosVendidos);
+
+  let asuetos = parseInt(inputAsuetos.value);
+  Proyeccion.setAsuetos(asuetos);
+
+  // actualizar los valores y mostrarlos dennuevo en pantalla
+  Proyeccion.setMetaDiaria();
+  Proyeccion.setProyeccion();
+  Proyeccion.setPorcentajeProyeccion();
+  Proyeccion.mostrarResultados();
 });
 
 Proyeccion.mostrarResultados();
