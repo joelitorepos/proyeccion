@@ -10,39 +10,25 @@
     <body>
         <main>
             <h1>Proyeccion de ventas</h1>
-            <div class="form-container">
-                <form id="formulario-ventas">
-                    <h2>Meta de ventas</h2>
-                    <input type="number" class="input" id="metas">
-                    <button 
-                        type="submit" 
-                        placeholder="Ingrese su meta de ventas este mes" 
-                        class="button-submit">
-                        Enviar
-                    </button>
+            <div id="form-container">
+                <!-- NUEVO FORMULARIO -->
+                <form>
+                    <div id="formulario-ventas">
+                        <h2>Meta de ventas</h2>
+                        <input type="number" class="input" id="metas" required>
+                    </div>
+                    <div id="formulario-ventas">
+                        <h2>Articulos vendidos</h2>
+                        <input type="number" class="input" id="metas" required>
+                    </div>
+                    <div id="formulario-ventas">
+                        <h2>Asuetos</h2>
+                        <input type="number" class="input" id="metas" required>
+                    </div>
+                    <button type="submit"></button>
                 </form>
-                <form id="formulario-articulos">
-                    <h2>Articulos vendidos</h2>
-                    <input type="number" class="input" id="articulos">
-                    <button 
-                        type="submit" 
-                        placeholder="Ingrese la cantidad de articulos que vendio" 
-                        class="button-submit">
-                        Enviar
-                    </button>   
-                </form>
-                <form id="formulario-asuetos">
-                    <h3>Asuetos</h3>
-                    <input type="number" class="input" id="asuetos">
-                    <button 
-                        type="submit" 
-                        placeholder="Ingrese la cantidad de asuetos que tendra este mes" 
-                        class="button-submit">
-                        Enviar
-                    </button>
-                </form>
-            </div>
+            <div id="resultados"></div>
         </main>
-        <script src="script.js"></script>
+        <script src="./typescript/script.js"></script>
     </body>
 </html>
