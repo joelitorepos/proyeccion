@@ -5,32 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Victor Joel">
     <title>Proyeccion</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-    <body>
-        <main>
-            <h1>Proyeccion de ventas</h1>
-            <div id="form-container">
-                <form id="formulario-ventas">
+    <body class="bg-blue-300">
+        <main class="bg-gray-800 text-slate-100 w-[clamp(300px,100%,600px)] mx-auto m-5 p-4 h-[600px] flex flex-col justify-evenly rounded-xl">
+            <h1 class="text-center text-3xl font-medium">Proyeccion de ventas</h1>
+            <div id="form-container" class="">
+                <form id="formulario-ventas" class="flex flex-col w-full rounded-lg">
                     <div>
-                        <h2>Meta de ventas</h2>
-                        <input type="number" class="input" id="metas" required>
+                        <h2 class="text-2xl font-medium">Meta de ventas</h2>
+                        <p>Ingresa lo que se espera vender al final del mes</p>
+                        <input type="number" class="my-2 p-1 w-full border-[1px] border-[#ddd] rounded-sm" id="metas" required>
                     </div>
                     <div id="alerta"></div>
                     <div>
-                        <h2>Articulos vendidos</h2>
-                        <input type="number" class="input" id="articulos" required>
+                        <h2 class="text-2xl font-medium">Articulos vendidos</h2>
+                        <p>Ingresa lo que ya se ha vendido en el mes actual</p>
+                        <input type="number" class="my-2 p-1 w-full border-[1px] border-[#ddd] rounded-sm" id="articulos" required>
                     </div>
                     <div id="alerta2"></div>
                     <div>
-                        <h2>Asuetos</h2>
-                        <input type="number" class="input" id="asuetos" required>
+                        <h2 class="text-2xl font-medium">Asuetos</h2>
+                        <p>Ingresa los dias de descanzo por asuetos que aun no ha tenido</p>
+                        <input type="number" class="my-2 p-1 w-full border-[1px] border-[#ddd] rounded-sm" id="asuetos" required>
                     </div>
                     <div id="alerta3"></div>
-                    <button type="submit" class="button-submit">ENVIAR</button>
+                    <button type="submit" class="my-2 p-1 w-full bg-[#48e] text-[#111] cursor-pointer rounded-sm hover:opacity-90">ENVIAR</button>
                 </form>
-            <div id="resultados"></div>
-        </main>
+                <div id="resultados"></div>
+            </main>
         <script src="./typescript/script.js"></script>
     </body>
 </html>
