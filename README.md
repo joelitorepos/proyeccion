@@ -26,8 +26,8 @@ Puedes ver el proyecto con el enlace: [https://joelitorepos.github.io/proyeccion
 ## Tener el proyecto en tu dispositivo
 
 1. **clonar el repositorio**
-```
 bash
+```
 git clone https://github.com/joelitorepos/proyeccion.git
 cd proyeccion
 
