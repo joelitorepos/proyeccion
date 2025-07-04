@@ -28,7 +28,7 @@ Puedes ver el proyecto con el enlace: [https://joelitorepos.github.io/proyeccion
 1. **clonar el repositorio**
 ```
 bash
-git clone [https://github.com/joelitorepos/proyeccion.git](https://github.com/joelitorepos/proyeccion.git)
+git clone https://github.com/joelitorepos/proyeccion.git
 cd proyeccion
 
 ```
